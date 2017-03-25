@@ -202,7 +202,7 @@ void Process_movement(int (*main_board)[4],char c,int *score,int *stage) {//Typi
 	}
 
 	////////////////////////////////////////////////////
-	//1. Eliminating Zeros on the way(TESTED: Fast and Finely working, 161125)
+	//1. Eliminating Zeros on the way(TESTED: Fast and Finally working, 161125)
 	////////////////////////////////////////////////////
 
 	//Horizontal Zero-Blank Elimination////////////////////
@@ -237,7 +237,7 @@ void Process_movement(int (*main_board)[4],char c,int *score,int *stage) {//Typi
 	/////////////Elimination of "0 Blank" completed!
 
 	///////////////////////////////////////////////////////////////////////
-	//2. Pushing numbers & Combining Them (Tested, Also Finely working and Fast, however 
+	//2. Pushing numbers & Combining Them (Tested, Also Finally working and Fast, however 
 	//in 'TWO SUM MODE', this will also process 0-0-0-0 or 0-0-2-2 kind of array
 	//I found this quite annoying and if it affects the program too much, whihc probably wouldn't happen,
 	//I would add two (!=0) statements to the 'if' where it checks if it is 'TWO SUM-situation',161126)
