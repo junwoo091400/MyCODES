@@ -1,0 +1,51 @@
+<Main_Title>
+ /   .__ .  ..__     .___                ,          \ 
+<    [__)|\/|[__)    [__ ._  _.._.  .._ -+- _ ._.    >
+ \   [__)|  ||   ____[___[ )(_.[  \_|[_) | (/,[     / 
+                                  ._||                
+.          .                    .  ..  ..__..  ..__   
+|_   .     |. .._ .    , _  _   |__||  |[__]|\ |[ __  
+[_)\_|  \__|(_|[ ) \/\/ (_)(_)  |  ||/\||  || \|[_./  
+   ._|                                                
+<END>
+
+<Help_Page>
+ /   .__ .  ..__     .___                ,          \ 
+<    [__)|\/|[__)    [__ ._  _.._.  .._ -+- _ ._.    >
+ \   [__)|  ||   ____[___[ )(_.[  \_|[_) | (/,[     / 
+                                  ._||                
+.          .                    .  ..  ..__..  ..__   
+|_   .     |. .._ .    , _  _   |__||  |[__]|\ |[ __  
+[_)\_|  \__|(_|[ ) \/\/ (_)(_)  |  ||/\||  || \|[_./  
+   ._|                                                
+
+ [PROGRAM NAME]
+
+This program is "BMP_Encrypter", intended to mimic Steganography(hiding data inside an image) with my own style.
+
+ [DEVELOPER]
+
+Junwoo HWANG, 2017-05-28 last Updated
+
+ [FUNCTION]
+
+1) Encrypt: this program will encrypt 'EncryptSource' File into 'Background' File, making a new file at 'Output' folder.
+
+
+2) Decrypt: this protam will attempt to 'DecryptSource' File and output in 'Decrypt' folder.
+
+
+** [ NOTE ] **
+
+ -This program has it's own Data Storage Place called 'DATA'. It has 2 folders (NO_OPEN_storage & YES_OPEN_Output).
+User should interact with 'YES_OPEN_Output' folder only.
+ 
+ -This program was designed so that for EVERY en/de-cryption, you 'DRAG_N_DROPED' file will be copied into this program's own storage.
+And after any circumstances, the copied file will be deleted. So those copied files will APPEAR and DISAPPEAR
+in a blink of an eye. So there is no reason for you go go inside 'NO_OPEN_storage'...
+
+ -If, you decrypt some files too much... You might end up packing same Decrypted File into 'Decrypt' folder...
+In that case, your 'Originally decrypted file with that name' will be REMOVED & will be Replaced with the NEW decrypted file with that name...
+
+ -Also, this is same for Encryption... BE AWARE THAT ANY FILE WITH THE NAME YOU WANT TO OUTPUT EXISTS, IT WILL BE REMOVED AND REPLACED...
+<END>
