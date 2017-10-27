@@ -1,0 +1,9 @@
+1.Decoding M10 Radiosonde
+http://keraman.free.fr/rxm10/rxm10.html
+
+2.Programing!!! M10 Radiosonde
+http://f4cqa.free.fr/radiosondes/reprog/modif_10.htm
+
+3.Interface MSP430 Programmer Schematic !!
+http://keraman.free.fr/m10/connections_bsl.png
+

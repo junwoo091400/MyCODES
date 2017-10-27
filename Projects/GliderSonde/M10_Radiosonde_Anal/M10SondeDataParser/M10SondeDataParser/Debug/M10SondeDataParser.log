@@ -1,0 +1,4 @@
+﻿  Source.cpp
+c:\users\기본\desktop\10k hours-junwoohwang\!research(build)\!glidersonde\m10sondedataparser\m10sondedataparser\source.cpp(66): warning C4715: 'Export_M10OneFlight_csv': not all control paths return a value
+  M10SondeDataParser.vcxproj -> C:\Users\기본\Desktop\10K Hours-JunwooHWANG\!Research(build)\!GliderSonde\M10SondeDataParser\Debug\M10SondeDataParser.exe
+  M10SondeDataParser.vcxproj -> C:\Users\기본\Desktop\10K Hours-JunwooHWANG\!Research(build)\!GliderSonde\M10SondeDataParser\Debug\M10SondeDataParser.pdb (Full PDB)
