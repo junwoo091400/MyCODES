@@ -37,6 +37,7 @@ PHOTO_IMAGE_INDEX = 4
 
 for indi in getPNGList():
     indexes = indi.split('_')
+    indexes[MAP_NAME_INDEX] = indexes[MAP_NAME_INDEX][-1]#Last One We don't wonat directory name to be included.
     indexes[PLAY_TIME_INDEX] = int(indexes[PLAY_TIME_INDEX]) # make it integer.
     indexes[PLAYER_NAME_INDEX] = indexes[PLAYER_NAME_INDEX][:-4] # cut .png
     indexes.append(indi)#Full NAME
@@ -107,7 +108,7 @@ def genImageList():
 
 
 def playerGuess_juho():
-    global GuessedPlayer, inputPlayer, CorrectPlayer
+    global GuessedPlayer, inputPlayer, CorrectPlayer, correctPlayer
     GuessedPlayer = True
     if('Kim' == correctPlayer):
         CorrectPlayer = True
@@ -117,7 +118,7 @@ def playerGuess_juho():
     dispCur()
     
 def playerGuess_daun():
-    global GuessedPlayer, inputPlayer, CorrectPlayer
+    global GuessedPlayer, inputPlayer, CorrectPlayer, correctPlayer
     GuessedPlayer = True
     if('Jeong' == correctPlayer):
         CorrectPlayer = True
@@ -127,7 +128,7 @@ def playerGuess_daun():
     dispCur()
 
 def mapGuess_K():
-    global GuessedMap, inputMap, CorrectMap
+    global GuessedMap, inputMap, CorrectMap, correctMap
     GuessedMap = True
     if('K' == correctMap):
         CorrectMap = True
@@ -137,7 +138,7 @@ def mapGuess_K():
     dispCur()
 
 def mapGuess_S():
-    global GuessedMap, inputMap , CorrectMap
+    global GuessedMap, inputMap , CorrectMap, correctMap
     GuessedMap = True
     if('S' == correctMap):
         CorrectMap = True
@@ -171,6 +172,8 @@ def printSTATISTICS():
 
     len_per_epoch = len(ImageList)
     print('printing STATISTICS....')
+    if len(STATISTICS) == 0:
+        return
     temp = STATISTICS[-1][:]#Latest one, copy.
     Export_Pipe.write('Player / Map / BOTH\n')
     Export_Pipe.write('{},{},{}\n'.format(temp[0],temp[1],temp[2]))
@@ -224,6 +227,18 @@ def gotoNextImage():
         GuessedMap = False
         GuessedPlayer= False
         if(globalIndex == len(ImageList)):#Reached the End
+            print('pressGUESStoNEXTIMAGE!!')
+            printSTATISTICS()
+
+            printRECORD_STAT()
+
+            if(Train_END):
+                print('TRAIN END!!!')
+                FILE_CLOSE()
+                print('You are TRAINED!!! Congrats.')
+                input('DONE')
+                quit()
+
             EpochCount += 1
 
             displayEPOCH()
@@ -233,20 +248,6 @@ def gotoNextImage():
             
             newList = [playerRightCount,mapRightCount,bothRightCount]
             STATISTICS.append(newList)
-
-            playerRightCount = 0
-            mapRightCount = 0
-            bothRightCount = 0
-            
-            printSTATISTICS()
-
-            printRECORD_STAT()
-
-            if(Train_END):
-                FILE_CLOSE()
-                print('You are TRAINED!!! Congrats.')
-                input('DONE')
-                quit()
             
             playerRightCount = 0
             mapRightCount = 0
@@ -277,9 +278,9 @@ def gotoNextImage():
         displayStr += temp
         displayStr += 'Press guess! AGAIN to continue...\n\n\n'
         displayStr += '<<ROUND {}>>\n'.format(total_Round)
-        displayStr += 'Your Both_Correct-rate : {}/{}({}%)\n'.format(bothRightCount,len(ImageList),round(bothRightCount/len(ImageList)*100,1))
-        displayStr += 'Your Player_Correct-rate : {}/{}({}%)\n'.format(playerRightCount,len(ImageList),round(playerRightCount/len(ImageList)*100,1))
-        displayStr += 'Your Map_Correct-rate : {}/{}({}%)\n'.format(mapRightCount,len(ImageList),round(mapRightCount/len(ImageList)*100,1))
+        displayStr += 'Your Both_Correct-rate : {}/{}({}%)\n'.format(bothRightCount,globalIndex,round(bothRightCount/(globalIndex)*100,1))
+        displayStr += 'Your Player_Correct-rate : {}/{}({}%)\n'.format(playerRightCount,globalIndex,round(playerRightCount/(globalIndex)*100,1))
+        displayStr += 'Your Map_Correct-rate : {}/{}({}%)\n'.format(mapRightCount,globalIndex,round(mapRightCount/(globalIndex)*100,1))
         bigPicLabel.config(text = displayStr)
         pressGUESStoNextImg = True
         
@@ -332,6 +333,10 @@ def Cheat():
     global STATISTICS
 
     global playerRightCount,mapRightCount,bothRightCount
+
+    global Train_END
+
+    Train_END = True
     
     pressGUESStoNextImg = True
     globalIndex = len(ImageList)
