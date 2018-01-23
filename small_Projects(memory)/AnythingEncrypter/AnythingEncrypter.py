@@ -49,7 +49,7 @@ def Main():
 	To = input("To Where?(Must be Directory) :")
 	#To = To[1:-1] # Drag-and-Drop contains unnecessary " " on both ends. So eliminate them.
 	if os.path.isfile(To):
-		From = os.path.dirname(To) # Extract ONLY the Directory.
+		To = os.path.dirname(To) # Extract ONLY the Directory.
 
 	if (not os.path.isdir(From)) or (not os.path.isdir(To)):
 		print("Uh oh, at least one of From/To directory doesn't seem legit...")
