@@ -27,14 +27,14 @@ Pretty Handy, if you want to hide some pictures / files from some folder with a 
 def EncryptTheFile(From,To):
 	print('Encrypt From({}) -> ({})'.format(From,To))
 	FromFile = open(From,'rb')
-	ToFile = open(To,'wb')
 	Buf = FromFile.read()
 	newBuf = [(~b % 256) for b in Buf] # BITWISE-inversion. Also, don't forget to keep it in (0,256)
-
 	newBuf = bytearray(newBuf) # Make into 'bytearray' for File-Write.
-	ToFile.write(newBuf)
 
-	FromFile.close()
+	FromFile.close() # Close First, for possibility that From == To. Opening equal file-name with 'rb' and 'wb' causes Data-Loss!
+
+	ToFile = open(To,'wb')
+	ToFile.write(newBuf)
 	ToFile.close()
 
 def Main():
