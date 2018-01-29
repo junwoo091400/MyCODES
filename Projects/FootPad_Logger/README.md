@@ -8,6 +8,8 @@ Hardware I made [materials] :
 
 The Logging was mostly done between '2017/11/06' ~ '2017/12/12'
 
+<b>Detailed Instructables Available! (https://www.instructables.com/id/FootPadLogger/) </b>
+
 ****************************************************************************************
 
 This Project gave me an 'objective' view on our school's congestion, mostly at Lunch Time.
