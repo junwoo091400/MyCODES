@@ -20,24 +20,9 @@
 Humidity and Temperature Sensor DHT22 info found at
 http://www.sparkfun.com/products/10167
 
-Version 0.7: 1 April 2017 by Junwoo HWANG
--Noticed Too much SYNC_TIMEOUT so wanted to see accuracy of delayMicroseconds() function.
--Seems like '70us(Bit 1)' pulse is retryCountloop*54 times!
--And, '26 ~ 28us(Bit 0)' pulse is retryCountloop*19 times!
--By Sampling 100 Sensor Readout, Each 'LoopValue' was recorded *N times:
-<BIT 0> : '14'*14 | '15'*43 | '16'*3 | '17'*7 | '18'*149 | '19'*2065 | '20'*302
-<BIT 1> : '49'*34 | '50'*65 | '51'*4 | '52'*3 | '53'*126 | '54'*1101 | '55'*85
-=>This made me conclud that Each Standard Value of loop would be 19 and 54 (most frequent)
-And to determine whether it is Bit 1 or Bit 0, the value would be : (20(0-MAX)+49(1-MIN))/2  = 34.5
-So, My determinet will be if(retryCount > 35) !!
-
-Version 0.6: 28 Mar 2017 by Junwoo HWANG
--Updated the method of getting data to seperate '2-part ACK pulse'.
--2 ACK Pulse with each length of 80(us) will be processed in 2 step.
--Reuducing the DHT22_DATA_BIT_COUNT to 41->40.
--if you include the second ack. as the bit-read,
--There is no Proceding 50(us) Start_LOW pulse. So it could give the Sync Timeout
--at the First for statement of Data READOUT. That is why I reduced to tal DATA num & added 2-part ACK processing.
+Version 0.6 : 29 Jan 2018 by Junwoo HWANG
+- delayMicroseconds(2) Actually only delays (1 + 1/8) microseconds. So changed it to '3'
+- didn't work before the fix, now it works.
 
 Version 0.5: 15 Jan 2012 by Craig Ringer
 - Updated to build against Arduino 1.0
@@ -77,7 +62,10 @@ extern "C" {
 #define DIRECT_MODE_INPUT(base, mask)	((*(base+1)) &= ~(mask))
 #define DIRECT_MODE_OUTPUT(base, mask)	((*(base+1)) |= (mask))
 #define DIRECT_WRITE_LOW(base, mask)	((*(base+2)) &= ~(mask))
-#define DIRECT_WRITE_HIGH(base, mask)	((*(base+2)) |= (mask))
+//#define DIRECT_WRITE_HIGH(base, mask)	((*(base+2)) |= (mask))
+
+// This should be 40, but the sensor is adding an extra bit at the start
+#define DHT22_DATA_BIT_COUNT 41
 
 DHT22::DHT22(uint8_t pin)
 {
@@ -127,64 +115,44 @@ DHT22_ERROR_t DHT22::readData()
   retryCount = 0;
   do
   {
-    if (retryCount > 125)//152 microseconds.
+    if (retryCount > 125)
     {
       return DHT_BUS_HUNG;
     }
     retryCount++;
-    delayMicroseconds(2);
+    delayMicroseconds(3);
   } while(!DIRECT_READ(reg, bitmask));
-  
   // Send the activate pulse
   cli();
-  DIRECT_MODE_OUTPUT(reg, bitmask);
-  DIRECT_WRITE_LOW(reg, bitmask); // Output Low
+  DIRECT_WRITE_LOW(reg, bitmask);
+  DIRECT_MODE_OUTPUT(reg, bitmask); // Output Low
   sei();
-  delayMicroseconds(1100); // 1.1 ms Start Transmistting Pulse! ///////////////////////////"1.1ms LOW":Transmission Start Pulse by Master
+  delayMicroseconds(1100); // 1.1 ms
   cli();
   DIRECT_MODE_INPUT(reg, bitmask);	// Switch back to input so pin can float
   sei();
-
-  /////////////////////////////////////////////////////////////////////////////////////////
-  // Find the Start of the First ACK Pulse <Wait for 20~40 microseconds.>
+  // Find the start of the ACK Pulse
   retryCount = 0;
   do
   {
-    if (retryCount > 41) //(Spec is 20 to 40 us
+    if (retryCount > 25) //(Spec is 20 to 40 us, 25*2 == 50 us)
     {
       return DHT_ERROR_NOT_PRESENT;
     }
     retryCount++;
-    delayMicroseconds(2);
-  } while(DIRECT_READ(reg, bitmask));//untill input goes LOW.(Start of the ACK pulse)//:Find the Starting point of the First_ACK by sensor
-  
-  //NOW we know the sensor has sent an ACK_low pulse
-  // Find the end of the First ACK Pulse(80 microseconds)
+    delayMicroseconds(3);
+  } while(!DIRECT_READ(reg, bitmask));
+  // Find the end of the ACK Pulse
   retryCount = 0;
   do
   {
-    if (retryCount > 82) //(Spec is 80 us
+    if (retryCount > 50) //(Spec is 80 us, 50*2 == 100 us)
     {
       return DHT_ERROR_ACK_TOO_LONG;
     }
     retryCount++;
-    delayMicroseconds(2);
-  } while(!DIRECT_READ(reg, bitmask));////////"Read ACK Pulse-1":80 microseconds Pull_LOW by the sensor
-
-  //NOW We got successful 80 microsecond of First ACK Pulse (LOW)
-  //We need to find the next 80 microsecond of Second ACK Pulse (HIGH)
-  retryCount = 0;
-  do
-  {
-	  if (retryCount > 82) //(Spec is 80 us
-	  {
-		  return DHT_ERROR_ACK_TOO_LONG;
-	  }
-	  retryCount++;
-	  delayMicroseconds(2);
-  } while (DIRECT_READ(reg, bitmask));////////"Read ACK Pulse-2":80 microseconds Pull_HIGH by the sensor.
-  //It got pulled down Successfully. NOW We can start reading in some DATAs
-
+    delayMicroseconds(3);
+  } while(DIRECT_READ(reg, bitmask));
   // Read the 40 bit data stream
   for(i = 0; i < DHT22_DATA_BIT_COUNT; i++)
   {
@@ -192,24 +160,23 @@ DHT22_ERROR_t DHT22::readData()
     retryCount = 0;
     do
     {
-      if (retryCount > 57) //(Spec is 50 us), "50 microseconds Pull_LOW at Start of bit Trans. by the sensor"
+      if (retryCount > 35) //(Spec is 50 us, 35*2 == 70 us)
       {
-		  KbitTimes[i] = 69;
         return DHT_ERROR_SYNC_TIMEOUT;
       }
       retryCount++;
-      delayMicroseconds(2);
+      delayMicroseconds(3);
     } while(!DIRECT_READ(reg, bitmask));
     // Measure the width of the data pulse
     retryCount = 0;
     do
     {
-      if (retryCount > 82) //(Spec is ( '26~28<REAL30>' OR '70<REAL74>' ) us
+      if (retryCount > 50) //(Spec is 80 us, 50*2 == 100 us)
       {
         return DHT_ERROR_DATA_TIMEOUT;
       }
       retryCount++;
-      delayMicroseconds(2);
+      delayMicroseconds(3);
     } while(DIRECT_READ(reg, bitmask));
     bitTimes[i] = retryCount;
   }
@@ -217,26 +184,26 @@ DHT22_ERROR_t DHT22::readData()
   // that were needed to find the end of each data bit
   // Spec: 0 is 26 to 28 us
   // Spec: 1 is 70 us
-  // 50 microseconds(middle point) = (1.22)*'41'[retryCounts]
   // bitTimes[x] <= 11 is a 0
   // bitTimes[x] >  11 is a 1
+  // Note: the bits are offset by one from the data sheet, not sure why
   for(i = 0; i < 16; i++)
   {
-    if(bitTimes[i] > 35)//Bit '1'
+    if(bitTimes[i + 1] > 11)
     {
       currentHumidity |= (1 << (15 - i));
     }
   }
   for(i = 0; i < 16; i++)
   {
-    if(bitTimes[i + 16] > 35)//Bit '1'
+    if(bitTimes[i + 17] > 11)
     {
       currentTemperature |= (1 << (15 - i));
     }
   }
   for(i = 0; i < 8; i++)
   {
-    if(bitTimes[i + 32] > 35)//Bit '1'
+    if(bitTimes[i + 33] > 11)
     {
       checkSum |= (1 << (7 - i));
     }
@@ -258,13 +225,13 @@ DHT22_ERROR_t DHT22::readData()
   csPart2 = currentHumidity & 0xFF;
   csPart3 = currentTemperature >> 8;
   csPart4 = currentTemperature & 0xFF;
-
   if(checkSum == ((csPart1 + csPart2 + csPart3 + csPart4) & 0xFF))
   {
     return DHT_ERROR_NONE;
   }
   return DHT_ERROR_CHECKSUM;
 }
+
 //
 // This is used when the millis clock rolls over to zero
 //

@@ -5,8 +5,6 @@
 
 #define DHT22_ERROR_VALUE -995
 
-#define DHT22_DATA_BIT_COUNT 40
-
 typedef enum
 {
   DHT_ERROR_NONE = 0,
