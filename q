@@ -1,0 +1,373 @@
+[33mcommit 56405491964e22b18514658cd773f738fdf23e23[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: junwoo091400 <junwoo091400@gmail.com>
+Date:   Wed Mar 28 18:24:30 2018 +0900
+
+    Add 180328 Algorithm class assignment. Because I devoted 2- hours into it... Damn my perfectionism...
+
+[33mcommit ad8bef8dc4686f151cd197743ea908241d2b8270[m
+Author: junwoo091400 <junwoo091400@gmail.com>
+Date:   Mon Feb 12 00:10:46 2018 +0900
+
+    Add HMC5883L 8 GAUSS measurement project
+
+[33mcommit 0577b89922099f7f42e5dd4a291b74844ab62f2a[m
+Author: junwoo091400 <junwoo091400@gmail.com>
+Date:   Tue Jan 30 00:20:20 2018 +0900
+
+    FootPlad Logger CSV file final version update + README instructables link update
+
+[33mcommit 966b3755be40a22f1f614cef6f35e99e44252828[m
+Author: junwoo091400 <junwoo091400@gmail.com>
+Date:   Tue Jan 30 00:19:25 2018 +0900
+
+    DHT22_Display_Promini Upload, ahhh delayMicroseconds(x)
+
+[33mcommit 64bb6ef57b4ece4579e07429ef5ced3c2e0e0b57[m
+Author: junwoo091400 <junwoo091400@gmail.com>
+Date:   Tue Jan 30 00:18:44 2018 +0900
+
+    GliderSonde Photo Upload
+
+[33mcommit 942cb43910bfe25f248010af13776bd3b1a07dc2[m
+Author: junwoo091400 <junwoo091400@gmail.com>
+Date:   Mon Jan 29 23:44:23 2018 +0900
+
+    DHT22 Library fixed version upload. Delete Old crappy fix of mine :)
+
+[33mcommit c8c6700667e7dd86ee7136ee500bf190a7eaf4f0[m
+Author: junwoo091400 <junwoo091400@gmail.com>
+Date:   Mon Jan 29 23:15:54 2018 +0900
+
+    delayMicroseconds investigation README upload
+
+[33mcommit 46849c3d656c1b3bff8006c3f575c9d35693f170[m
+Author: junwoo091400 <junwoo091400@gmail.com>
+Date:   Mon Jan 29 22:13:52 2018 +0900
+
+    Upload delayMicrsoeconds Investigation Files
+
+[33mcommit cbd630e4cca15d53cace11d1f145d1025cbc5981[m
+Author: junwoo091400 <junwoo091400@gmail.com>
+Date:   Wed Jan 24 02:16:24 2018 +0900
+
+    AnythingEncrypter_ Fixed DataLOSS when read/writing towards SAME file. Solution : Close 'From' File First, then overwrite it by opening 'To' Later. No need for 'if' statement to see if From == To. Cleaner, Nice!
+
+[33mcommit 9b9eb63d3a088ed21b4ce234bc4e9eed93a9b482[m
+Author: junwoo091400 <junwoo091400@gmail.com>
+Date:   Wed Jan 24 02:04:56 2018 +0900
+
+    Fixed Typo. If 'To' was for a File(path), 'From' would've been overwritten as 'To's upper Dir, and 'To' itself would hold a 'File-Name'.
+
+[33mcommit 403166b9f6711bca7f9d4847481951031b3af37c[m[33m ([m[1;31morigin/AnythingEncyprtREADME_fix[m[33m)[m
+Author: JunwooHWANG <junwoo091400@gmail.com>
+Date:   Mon Jan 22 22:58:28 2018 +0900
+
+    AnythingEnryptREADME_fixed
+    
+    README files should be checked on Github. This case was pretty Brutal.
+
+[33mcommit 7b74b8446b48dc23aaff4b816dc8b89df4a87f5a[m
+Author: junwoo091400 <junwoo091400@gmail.com>
+Date:   Mon Jan 22 22:43:40 2018 +0900
+
+    AnythingEncrypter Upload
+
+[33mcommit 018dd6c5d72c6569afe7e745ffe062c21306a53c[m
+Author: junwoo091400 <junwoo091400@gmail.com>
+Date:   Fri Jan 12 23:16:44 2018 +0900
+
+    UnoJoy Project Upload
+
+[33mcommit 32ebd63d29fc93386648403a4fda984076e6b1d0[m
+Author: junwoo091400 <junwoo091400@gmail.com>
+Date:   Fri Jan 12 06:29:47 2018 +0900
+
+    Add project: KeyboardEmulator(for a poor guy with no USB-keyboard)
+
+[33mcommit 5ab6af7a0bf3bf5392455f37a4d084d1a0c1c67d[m
+Author: junwoo091400 <junwoo091400@gmail.com>
+Date:   Tue Dec 12 21:40:10 2017 +0900
+
+    FootPad_Logger Project initial Upload
+
+[33mcommit 8c8f2ac3a4f834c84bbf94e2e9f5f7f511e6f7db[m
+Author: junwoo091400 <junwoo091400@gmail.com>
+Date:   Sun Nov 19 16:20:54 2017 +0900
+
+    DSHS Scheduler thing that I gave up on February 2017, add here, it's a LEGACY :)
+
+[33mcommit 80813d8e7470591d55d0b1f6320e7acb096ae573[m
+Author: junwoo091400 <junwoo091400@gmail.com>
+Date:   Sun Nov 19 16:09:14 2017 +0900
+
+    Add HS1_SpinningPlate_Simulator, this was for Jayul-Research Thing!! around 2016 November
+
+[33mcommit aa01e8c188c7f802a31035279e9957c1bb7e7d6a[m
+Author: junwoo091400 <junwoo091400@gmail.com>
+Date:   Fri Nov 10 11:27:04 2017 +0900
+
+    Regrouped Assignments_Big and small
+
+[33mcommit 2d29c61e5e190b1a78084afcf922b3b9e954761d[m
+Author: junwoo091400 <junwoo091400@gmail.com>
+Date:   Fri Nov 3 12:40:07 2017 +0900
+
+    LOL_MouseTrace_Trainer_python had ERRORS... related to './Directory' kinda stuff
+
+[33mcommit 92f7da44958c43d2fcdef295e7397257f9fa2d5c[m
+Author: junwoo091400 <junwoo091400@gmail.com>
+Date:   Fri Nov 3 11:09:41 2017 +0900
+
+    BlackBox folder was missed
+
+[33mcommit 3273e773894e8d2bec849f0961a6633f0b2c39cd[m
+Author: junwoo091400 <junwoo091400@gmail.com>
+Date:   Fri Nov 3 10:53:58 2017 +0900
+
+    Add 'LOL_MouseTraice_Trainer_python'
+
+[33mcommit b531507e63710def9525097a6d97a95445f3c68b[m
+Author: junwoo091400 <junwoo091400@gmail.com>
+Date:   Fri Oct 27 12:37:41 2017 +0900
+
+    GliderSonde in project folder Update. M10Sonde Anal stuff
+
+[33mcommit 6a2c6f9d673bd2e1d1fddb5c3e23482fa7f8316b[m
+Author: junwoo091400 <junwoo091400@gmail.com>
+Date:   Tue Oct 17 21:03:48 2017 +0900
+
+    Edited BMP_Encrypter Files
+
+[33mcommit 809527f6d716aba30d5a337b4ea12a444c0a57e1[m
+Author: junwoo091400 <junwoo091400@gmail.com>
+Date:   Tue Oct 17 20:48:28 2017 +0900
+
+    README.md in glidersonde modified
+
+[33mcommit c785ecd3d16bba22fbd45979f865bb02878064d6[m
+Author: junwoo091400 <junwoo091400@gmail.com>
+Date:   Tue Oct 17 20:33:34 2017 +0900
+
+    Deleting dum.txt
+
+[33mcommit 5359c33308e92283662eb1f08928a7bcaac22521[m
+Author: JunwooHWANG <junwoo091400@gmail.com>
+Date:   Fri Sep 1 12:54:40 2017 +0900
+
+    This just shows how much hassle I had to go through.
+
+[33mcommit d1e0ccd30ef0b0a0a5754c252c6494dbfa356e02[m
+Author: JunwooHWANG <junwoo091400@gmail.com>
+Date:   Fri Sep 1 12:54:04 2017 +0900
+
+    Create dum.txt
+
+[33mcommit 04b4996fa14e55f2a9280ede1239d5f2cda85698[m
+Author: JunwooHWANG <junwoo091400@gmail.com>
+Date:   Fri Sep 1 12:52:36 2017 +0900
+
+    Very useful code found on the internet.
+
+[33mcommit d1c295a539e40948e8db630bff45cbda9ae59014[m
+Author: JunwooHWANG <junwoo091400@gmail.com>
+Date:   Fri Sep 1 12:51:30 2017 +0900
+
+    Third Gyro Stabilizer code. Never flown
+
+[33mcommit 50a514a85a79707e8f049aae04ca4687cf7f2d5a[m
+Author: JunwooHWANG <junwoo091400@gmail.com>
+Date:   Fri Sep 1 12:50:53 2017 +0900
+
+    Create dum.txt
+
+[33mcommit 2c7b5e3b6d5ce50b2984136cc75d4de963dde802[m
+Author: JunwooHWANG <junwoo091400@gmail.com>
+Date:   Fri Sep 1 12:48:34 2017 +0900
+
+    GPS Code _ for testing only GPS
+
+[33mcommit 443f6c7f82852968cdcef5d7e26587114432040d[m
+Author: JunwooHWANG <junwoo091400@gmail.com>
+Date:   Fri Sep 1 12:47:45 2017 +0900
+
+    Simple Gyro Stabilizer
+
+[33mcommit 2b6fb85be298e180c9943564bc8d793414466083[m
+Author: JunwooHWANG <junwoo091400@gmail.com>
+Date:   Fri Sep 1 12:46:21 2017 +0900
+
+    Add files via upload
+
+[33mcommit 56adaeeda7eaf8b7ad1040b50dab451cfe34ca97[m
+Author: JunwooHWANG <junwoo091400@gmail.com>
+Date:   Fri Sep 1 12:45:42 2017 +0900
+
+    Create dum.txt
+
+[33mcommit 8401f99d474a5074e3a9588eb181353d43fbb4ad[m
+Author: JunwooHWANG <junwoo091400@gmail.com>
+Date:   Fri Sep 1 12:44:50 2017 +0900
+
+    Add files via upload
+
+[33mcommit b7829a2bb4dabb95947633584d6339d33205fbab[m
+Author: JunwooHWANG <junwoo091400@gmail.com>
+Date:   Fri Sep 1 12:44:29 2017 +0900
+
+    Create dum.txt
+
+[33mcommit f2fc3e8f4ffbe0b29e74b223c04af846d91fc4bc[m
+Author: JunwooHWANG <junwoo091400@gmail.com>
+Date:   Fri Sep 1 12:42:56 2017 +0900
+
+    Add files via upload
+
+[33mcommit 14d42af39355331923b6eb6534955db1023fd799[m
+Author: JunwooHWANG <junwoo091400@gmail.com>
+Date:   Fri Sep 1 12:42:12 2017 +0900
+
+    Create dum.txt
+
+[33mcommit 60f1fa90fc9902475154c60a1503c90b2bbde4df[m
+Author: JunwooHWANG <junwoo091400@gmail.com>
+Date:   Fri Sep 1 12:39:39 2017 +0900
+
+    Create Details.txt
+
+[33mcommit 56c3955f1700b8c42b7ed1370e4c00dd184d7b2a[m
+Author: JunwooHWANG <junwoo091400@gmail.com>
+Date:   Fri Sep 1 12:37:22 2017 +0900
+
+    Create AlphabetOrganizeNCouter_170818.py
+
+[33mcommit e9d66d78881eec8be33bd73574ea334b491bf143[m
+Author: JunwooHWANG <junwoo091400@gmail.com>
+Date:   Fri Sep 1 12:36:08 2017 +0900
+
+    Delete Nothing.txt
+
+[33mcommit 07b6ed8e67e74e7df2f695d4d0631e0446326df3[m
+Author: JunwooHWANG <junwoo091400@gmail.com>
+Date:   Fri Sep 1 12:35:59 2017 +0900
+
+    Delete Main.cpp
+
+[33mcommit 5517ae5bbd610b55ce8017d40f9acbf994fd2773[m
+Author: JunwooHWANG <junwoo091400@gmail.com>
+Date:   Fri Sep 1 12:35:28 2017 +0900
+
+    Add files via upload
+
+[33mcommit 227f740e16ec94d6da0fca3ee0ca2ebf2f8eed4f[m
+Author: JunwooHWANG <junwoo091400@gmail.com>
+Date:   Fri Sep 1 12:35:08 2017 +0900
+
+    Create Nothing.txt
+
+[33mcommit 298c297376eff5cec81c45d2f24e2f98795d2c94[m
+Author: JunwooHWANG <junwoo091400@gmail.com>
+Date:   Fri Sep 1 12:31:48 2017 +0900
+
+    Add files via upload
+
+[33mcommit f9f3b5914572c756308909d493af8b85028b7d59[m
+Author: JunwooHWANG <junwoo091400@gmail.com>
+Date:   Fri Sep 1 12:31:20 2017 +0900
+
+    Create Main.cpp
+
+[33mcommit f29479e116c8fd8ef6fdd82f5e8be473021b71ad[m
+Author: JunwooHWANG <junwoo091400@gmail.com>
+Date:   Fri Sep 1 12:30:51 2017 +0900
+
+    Delete Main.cpp
+
+[33mcommit d5dce0178e0ce38bc6db31af4a735054b51b1391[m
+Author: JunwooHWANG <junwoo091400@gmail.com>
+Date:   Fri Sep 1 12:28:50 2017 +0900
+
+    Main.cpp
+
+[33mcommit 1381c377bdf96f3d46dea4aa4425bd560e4d4e94[m
+Author: JunwooHWANG <junwoo091400@gmail.com>
+Date:   Tue Apr 4 16:40:53 2017 +0900
+
+    Delete Just.txt
+
+[33mcommit 417ad0710487b696192ed95d170b1b99c931838e[m
+Author: JunwooHWANG <junwoo091400@gmail.com>
+Date:   Tue Apr 4 16:40:34 2017 +0900
+
+    My Updated Version of DHT22(AM2302) Library
+    
+    Fixed some 'timing' issues that was caused by inaccuracy of 'delayMicroseconds(2)' in 'readData' function. Also, I changed the part where micro controller acknowledges the ACK pulse by the sensor. Original Library included the 'Second ACK pulse(80us HIGH)' as one of the Data bit that sensor is giving. However, this is not true and since the ACK pulse is way longer than real Transmitting bits, I just made Ack perceiving & Data Receiving parts Separate. This Works for me.
+
+[33mcommit 22a51e70d61df80863db9f5ec653e16540ce60c2[m
+Author: JunwooHWANG <junwoo091400@gmail.com>
+Date:   Tue Apr 4 16:36:05 2017 +0900
+
+    Delete keywords.txt
+
+[33mcommit aca4e0791ea3a4b80a63d183701e95e33462a38b[m
+Author: JunwooHWANG <junwoo091400@gmail.com>
+Date:   Tue Apr 4 16:35:55 2017 +0900
+
+    Delete README
+
+[33mcommit 92a27f5f541e195a4ae1d4df7c21b3d5efbdea6b[m
+Author: JunwooHWANG <junwoo091400@gmail.com>
+Date:   Tue Apr 4 16:35:41 2017 +0900
+
+    Delete DHT22.h
+
+[33mcommit 235f64907d56077c2fc87ba6b2f36d0d706eed58[m
+Author: JunwooHWANG <junwoo091400@gmail.com>
+Date:   Tue Apr 4 16:35:29 2017 +0900
+
+    Delete DHT22.cpp
+
+[33mcommit 309ede03c7d7cf31c455b471cc9a2effd62e56c1[m
+Author: JunwooHWANG <junwoo091400@gmail.com>
+Date:   Sun Apr 2 19:52:16 2017 +0900
+
+    Create Just.txt
+
+[33mcommit 05503c8dfe3e924a7977fd6bdcba16469393eac3[m
+Author: JunwooHWANG <junwoo091400@gmail.com>
+Date:   Sun Apr 2 19:51:30 2017 +0900
+
+    My Edited Version of DHT22 Sensor Library.
+
+[33mcommit 38f35fe0d6c0974c24fa35ea52174f3c10ad5d19[m
+Author: JunwooHWANG <junwoo091400@gmail.com>
+Date:   Sat Mar 25 12:01:43 2017 +0900
+
+    Fixing some Typeos
+    
+    fixed some typeos.
+
+[33mcommit d2093d0094314f01be3dfc9a98d6b405ef21e666[m
+Author: JunwooHWANG <junwoo091400@gmail.com>
+Date:   Sat Mar 25 11:54:56 2017 +0900
+
+    Created 2048_All_Over
+    
+    this was my assignment for my High School 1st year at 2016. Even though our teacher encouraged us to create the game step by step, I didn't like the final outcome. Which was full of mistakes that I've made throughout the whole year. So I just coded everything from the start and I like this one much better now!
+
+[33mcommit fd4d79104e0d7a0b3ca5eae01b5d44dd05cc05c6[m
+Author: JunwooHWANG <junwoo091400@gmail.com>
+Date:   Sat Mar 25 11:50:38 2017 +0900
+
+    Delete HI.txt
+
+[33mcommit 5b6ced85e23f11d54c7cc7e75d061d98d207a756[m
+Author: JunwooHWANG <junwoo091400@gmail.com>
+Date:   Sat Mar 25 11:50:23 2017 +0900
+
+    Create HI.txt
+
+[33mcommit 25272ad606aa353f6d6418e8dde4a9ad93e0dc31[m
+Author: JunwooHWANG <junwoo091400@gmail.com>
+Date:   Sat Mar 25 11:45:08 2017 +0900
+
+    Initial commit
