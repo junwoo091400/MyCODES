@@ -10,7 +10,7 @@ class Queue:
 	def upgrade_queue(self):
 		Bigger_queue = [0 for _ in range(self.maxSize*2)]#NEW!
 			
-		copy_idx = self.start
+		copy_idx = self.head
 		new_idx = 0
 
 		while(copy_idx != self.tail):#If we reach 'tail', the queue cycle is complete.
