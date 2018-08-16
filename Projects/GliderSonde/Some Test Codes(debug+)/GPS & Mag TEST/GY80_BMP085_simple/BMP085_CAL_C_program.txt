@@ -1,0 +1,72 @@
+#pragma warning(disable:4996)
+#include<stdio.h>
+typedef struct {
+	/*
+	*Stores the data read from EEPROM of BMP085. Used for calibration
+	*/
+	short AC1;
+	short AC2;
+	short AC3;
+	unsigned short AC4;
+	unsigned short AC5;
+	unsigned short AC6;
+	short BB1;
+	short B2;
+	short MB;
+	short MC;
+	short MD;
+}BMP085_CAL;
+
+BMP085_CAL BMcal;//variable.
+long UP;//Pressure DATA
+long UT;//Temperature DATA
+long final_T;//in 0.1 degCel.
+long final_P;//int Pa. At Sea Level : 101300.
+short oss = 0;//oversampling setting(0~3), Can be added as 6&7th bit in 0xF4(default) Register.
+
+void applyCalibration_BMP085() {
+	long X1 = ((UT - BMcal.AC6)*BMcal.AC5) >> 15;
+	long X2 = (BMcal.MC << 11) / (X1 + BMcal.MD);
+	long B5 = X1 + X2;
+	final_T = (B5 + 8) >> 4;//ex) 150 = 14.0(degC)
+
+	long B6 = B5 - 4000;
+	X1 = (BMcal.B2*(B6*B6 >> 12)) >> 11;
+	X2 = BMcal.AC2*B6 >> 11;
+	long X3 = X1 + X2;
+	long B3 = ((BMcal.AC1 * 4 + X3) << oss + 2) >> 2;
+	X1 = BMcal.AC3*B6 >> 13;
+	X2 = (BMcal.BB1*(B6*B6 >> 12)) >> 16;
+	X3 = (X1 + X2 + 2) >> 2;
+	unsigned long B4 = BMcal.AC4*(unsigned long)(X3 + 32768) >> 15;
+	unsigned long B7 = ((unsigned long)UP - B3)*(50000 >> oss);
+	if (B7<0x80000000)
+		final_P = (B7 * 2) / B4;
+	else
+		final_P = (B7 / B4) * 2;
+	X1 = (final_P >> 8)*(final_P >> 8);//upper bit Squared.
+	X2 = (-7357 * final_P) >> 16;
+	final_P += (X1 + X2 + 3791) >> 4;
+	//OMG!! FINALLy!!
+}
+int main() {
+	FILE* fp = fopen("C:\\noUNICODE\\170327\\BMP085_CAL_Data.txt", "rt");
+	if (fp == NULL)
+		printf("file not opened!\n");
+	for (int i = 0; i < sizeof(BMcal) / sizeof(short); i++) {
+		printf("getting : %d\n", i);
+		fscanf(fp,"%x", &(((unsigned short*)&BMcal)[i]));
+	}
+	for (int i = 0; i < sizeof(BMcal) / sizeof(short); i++)
+		printf("%d : %x\n", i, ((unsigned short*)&BMcal)[i]);
+
+	//while (1) {
+		printf("Enter UT,UP : ");
+		scanf("%l,%l", &UT, &UP);
+		applyCalibration_BMP085();
+		printf("RESULT(T,P) : ");
+		printf("%l,%l", final_T, final_P);
+	//}
+
+	return 0;
+}
