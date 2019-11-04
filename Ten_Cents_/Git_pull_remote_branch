@@ -1,0 +1,8 @@
+1. From Pull-request(https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/checking-out-pull-requests-locally):
+
+** cmd: git fetch origin pull/PULL_ID/head:BRANCHNAME
+
+ex. "git fetch origin pull/13363/head:pr-rover-velocity-frames"
+    "git checkout pr-rover-velocity-frames"
+   
+-----------
