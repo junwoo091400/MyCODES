@@ -1,0 +1,9 @@
+From : https://stackoverflow.com/questions/22575662/filename-too-long-in-git-for-windows
+
+CMD: git config --system core.longpaths true
+
+Explanation: Git has a limit of 4096 characters for a filename, except on Windows when Git is compiled with msys. It uses an older version of the Windows API and there's a limit of 260 characters for a filename.
+
+So as far as I understand this, it's a limitation of msys and not of Git. You can read the details here: https://github.com/msysgit/git/pull/110
+
+You can circumvent this by using another Git client on Windows or set core.longpaths to true as explained in other answers.
